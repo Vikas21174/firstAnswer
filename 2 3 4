@@ -1,0 +1,158 @@
+//Assignment Question 2 code
+
+import java.lang.Math;
+
+ class Point {
+    private Integer x;
+    private Integer y;
+    
+    public Point(){}
+    public Point(Integer x, Integer y) {this.x=x; this.y=y;}
+    public Integer getX() {
+        return x;
+    }
+    public void setX(Integer x) {
+        this.x = x;
+    }
+    public Integer getY() {
+        return y;
+    }
+    public void setY(Integer y) {
+        this.y = y;
+    }
+    @Override
+    public String toString() {
+        return "Point [x=" + x + ", y=" + y + "]";
+    }
+    
+     public double distance() {
+            return distance(0, 0);
+        }
+     public double distance(int x, int y) {
+         System.out.println( this.x + " " + this.y);
+   
+         return Math.sqrt((x - this.x) * (x - this.x) + (y - this.y) * (y - this.y));
+     }
+     public double distance(Point secondPoint) {
+         
+        // return distance(secondPoint.x, secondPoint.y);
+         System.out.println(+secondPoint.x+" "+ secondPoint.y);
+         return distance(secondPoint.x, secondPoint.y);
+         }
+
+
+
+//public static class Main {
+
+
+
+   public static void main(String[] args) {
+           Point first = new Point();
+           Point second = new Point();
+           first.setY(200);
+           first.setX(100);
+           second.setX(200);
+           second.setY(700);
+           System.out.printf("The distance between above two points is"+" %.1f "+"units\n", first.distance(second));
+
+
+
+}
+        
+    }
+ 
+
+
+
+
+//Assignment Question 3 code
+
+import java.util.Scanner;
+
+public class ArmStrongNumber {
+
+
+
+   
+    public static boolean isArmstrong(int n) {
+        int temp,last,sum=0;
+        temp=n;
+        while(temp>0) {
+            last=temp%10;
+            sum=sum+(last*last*last);
+            temp=temp/10;
+        }
+        if(sum==n) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+    
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        Scanner scn=new Scanner(System.in);
+        int num=scn.nextInt();
+        if(isArmstrong(num)) {
+            System.out.println("Number is Armstrong");
+        }else {
+            System.out.println("Number is not Armstrong");
+        }
+
+
+
+   }
+
+
+
+}
+
+
+
+
+//Assignment Question 4 code
+
+import java.text.DecimalFormat;
+import java.util.Scanner;
+public class SampleError {
+
+public static double getAbsoluteError(double av,double ev) {
+        double absolute_error=av-ev;
+        return Math.abs(absolute_error);
+    }
+    public static double getRelativeError(double av, double ev) {
+        double relative_error=(av-ev)/av;
+        return Math.abs(relative_error);
+    }
+    public static double getPercentageError(double av,double ev) {
+        double percentage_error=((av-ev)/av)*100;
+        return Math.abs(percentage_error);
+    }
+    
+    public static void main(String[] args) {
+        
+        String pattern="###.000";
+        DecimalFormat df=new DecimalFormat(pattern);
+        System.out.println("Enter actual value");
+        Scanner scn=new Scanner(System.in);
+        double av=scn.nextDouble();
+        System.out.println("Enter expected value");
+        Scanner scn1=new Scanner(System.in);
+        double ev=scn1.nextDouble();
+        
+    
+        if(av==0) {
+            System.out.println("Actual value is zero");
+        }else {
+        System.out.println("Absolute error is "+df.format(getAbsoluteError(av,ev))+" units");
+        System.out.println("Relative error is "+df.format(getRelativeError(av,ev))+" units");
+//       
+        
+        if(getPercentageError(av,ev)>1) {
+            System.out.println("Error: Percentage Error greater than 1");
+        }else {
+            System.out.println("Percentage error is "+df.format(getPercentageError(av,ev))+" units");
+        }  
+        }
+}
+  }
