@@ -1,0 +1,41 @@
+//Assignment Question 3 code
+
+import java.util.Scanner;
+
+public class ArmStrongNumber {
+
+
+
+   
+    public static boolean isArmstrong(int n) {
+        int temp,last,sum=0;
+        temp=n;
+        while(temp>0) {
+            last=temp%10;
+            sum=sum+(last*last*last);
+            temp=temp/10;
+        }
+        if(sum==n) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+    
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        Scanner scn=new Scanner(System.in);
+        int num=scn.nextInt();
+        if(isArmstrong(num)) {
+            System.out.println("Number is Armstrong");
+        }else {
+            System.out.println("Number is not Armstrong");
+        }
+
+
+
+   }
+
+
+
+}
